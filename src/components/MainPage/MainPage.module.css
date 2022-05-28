@@ -1,0 +1,50 @@
+.main {
+  width: 100%;
+  background-color: #f5f5f5;
+}
+
+.content {
+  height: 300px;
+  width: 600px;
+  background-color: #f1ecec;
+  border-radius: 6px;
+  border: 1px #000 solid;
+  margin-top: 80px;
+  margin-left: 200px;
+  padding-left: 70px;
+  padding-top: 40px;
+  font-family: Arial;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.contentText {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.contentBtns {
+  display: flex;
+  gap: 30px;
+  padding-top: 40px;
+}
+
+.contentBtns button {
+  background-color: #fff;
+  border: 1px solid;
+  border-radius: 8px;
+  width: 230px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.contentBtns button:hover {
+  background-color: rgba(209, 211, 211, 0.5);
+}
+
+.contentBtns button:active {
+  box-shadow: 0 2px #666;
+  transform: translateY(1px);
+}
