@@ -9,22 +9,29 @@ const Header = (props) => {
     <nav>
       <div className={s.content}>
         <h1 className={s.headerText}>SportPeople</h1>
-        <div className={s.lk}>
-          <img src={lk} />
-          <div>
-            {location.pathname === "/main" ? (
+        <div>
+          {location.pathname === "/main" ? (
+            <div className={s.lk}>
+              <img src={lk} />
               <NavLink to={"/profile"} className={s.lkText}>
                 Личный кабинет
               </NavLink>
-            ) : location.pathname === "/profile" ? (
+            </div>
+          ) : location.pathname === "/profile" ? (
+            <div className={s.lk}>
               <NavLink to={"/main"} className={s.lkText}>
                 Главная
               </NavLink>
-            ) : (
+            </div>
+          ) : location.pathname === "/profile/messages" ? (
+            <div className={s.lk}>
               <NavLink to={"/main"} className={s.lkText}>
+                Главная
               </NavLink>
-            )}
-          </div>
+            </div>
+          ) : (
+            <NavLink to={"/main"} className={s.lkText}></NavLink>
+          )}
         </div>
       </div>
     </nav>
