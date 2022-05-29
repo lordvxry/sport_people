@@ -12,13 +12,15 @@ const Auth = () => {
         </div>
         <div>
           <div className={s.authText}>Пароль:</div>{" "}
-          <input type='password' className={s.authInput}></input>
+          <input type="password" className={s.authInput}></input>
         </div>
         <div className={s.authBtns}>
-          <NavLink to={"/main"} className={s.lkText}>
+          <NavLink to={"/main"}>
             <button>Войти</button>
           </NavLink>
-          <button>Зарегистрироваться</button>
+          <NavLink to={"/reg"}>
+            <button>Регистрация</button>
+          </NavLink>
         </div>
       </div>
     </div>

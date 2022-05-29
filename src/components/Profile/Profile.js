@@ -16,6 +16,11 @@ const Profile = (props) => {
             Сообщения
           </NavLink>
         </div>
+        <div className={s.navbarLinks}>
+          <NavLink to={"/"} className={s.navbarLinksText} >
+            Выйти
+          </NavLink>
+        </div>
       </div>
       <div className={s.form}>
         <div className={s.formInputs}>
