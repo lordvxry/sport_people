@@ -14,6 +14,7 @@ const Profile = (props) => {
   function addPost() {
     const newPost = {
       id: 5,
+      myPost: true,
       name: "Максим Максим",
       sport,
       peopleCount: 1,

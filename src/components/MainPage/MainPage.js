@@ -2,13 +2,14 @@ import React from "react";
 import s from "./MainPage.module.css";
 import star from "../../assets/star.svg";
 import search from "../../assets/search.svg";
+import { NavLink } from "react-router-dom";
 
 const MainPage = (props) => {
-  const {onConnectToPostById, onDisconnectToPostById} = props;
+  const { onConnectToPostById, onDisconnectToPostById } = props;
 
   const postsElement = props.postData.posts.map((post) => {
     const onPostJoin = () => {
-      console.log('Присоединиться', post.id);
+      console.log("Присоединиться", post.id);
       if (post.iConnected) {
         onDisconnectToPostById(post.id);
       } else {
@@ -33,11 +34,15 @@ const MainPage = (props) => {
         </div>
         <div className={s.contentBtns}>
           <button onClick={onPostJoin}>
-            {
-              post.iConnected ? 'Отмена' : 'Присоединиться'
-            }
-            </button>
-          <button>Написать</button>
+            {post.iConnected ? "Отмена" : "Присоединиться"}
+          </button>
+          {post.myPost ? (
+            <></>
+          ) : (
+            <NavLink to={"/profile/messages"}>
+              <button>Написать</button>
+            </NavLink>
+          )}
         </div>
       </div>
     );

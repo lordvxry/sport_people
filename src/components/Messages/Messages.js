@@ -12,7 +12,9 @@ const Messages = (props) => {
       id: 5,
       message1: message,
     };
-    props.pushMessage(newMessage);
+    if (message !== "") {
+      props.pushMessage(newMessage);
+    }
     setMessage("");
   }
 
