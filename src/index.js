@@ -145,7 +145,6 @@ const pushMessage = (newMessage) => {
     }
   });
   postData.messages.push(newMessage);
-  renderDom();
 };
 
 const renderDom = () => {
