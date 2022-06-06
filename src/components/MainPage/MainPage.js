@@ -4,6 +4,45 @@ import star from "../../assets/star.svg";
 import search from "../../assets/search.svg";
 
 const MainPage = (props) => {
+  const {onConnectToPostById, onDisconnectToPostById} = props;
+
+  const postsElement = props.postData.posts.map((post) => {
+    const onPostJoin = () => {
+      console.log('Присоединиться', post.id);
+      if (post.iConnected) {
+        onDisconnectToPostById(post.id);
+      } else {
+        onConnectToPostById(post.id);
+      }
+    };
+
+    return (
+      <div key={post.id} className={s.content}>
+        <div>{post.name}</div>
+        <div className={s.contentText}>
+          <div>{post.sport}</div>
+          <div>
+            {post.peopleCount} из {post.allPeopleCount} чел.
+          </div>
+          <div>
+            Уровень: <img src={star} />{" "}
+          </div>
+          <div>{post.place}</div>
+          <div>Дата: {post.date}</div>
+          <div>Стоимость: {post.price} руб.</div>
+        </div>
+        <div className={s.contentBtns}>
+          <button onClick={onPostJoin}>
+            {
+              post.iConnected ? 'Отмена' : 'Присоединиться'
+            }
+            </button>
+          <button>Написать</button>
+        </div>
+      </div>
+    );
+  });
+
   return (
     <div className={s.main}>
       <div className={s.dropDowns}>
@@ -42,22 +81,7 @@ const MainPage = (props) => {
           </button>
         </div>
       </div>
-      <div className={s.content}>
-        <div>Андрей Андреев</div>
-        <div className={s.contentText}>
-          <div>Волейбол</div>
-          <div>6 из 14 чел.</div>
-          <div>
-            Уровень: <img src={star} />{" "}
-          </div>
-          <div>г. Томск, 14:00 - 17:00</div>
-          <div>Стоимость: 300 руб.</div>
-        </div>
-        <div className={s.contentBtns}>
-          <button>Присоединиться</button>
-          <button>Написать</button>
-        </div>
-      </div>
+      <div className={s.posts}>{postsElement}</div>
     </div>
   );
 };

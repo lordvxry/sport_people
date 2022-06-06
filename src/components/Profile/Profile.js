@@ -1,23 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import s from "./Profile.module.css";
 
 const Profile = (props) => {
+  const [sport, setSport] = useState("");
+  const [allPeopleCount, setAllPeopleCount] = useState("");
+  const [level, setLevel] = useState("");
+  const [place, setPlace] = useState("");
+  const [price, setPrice] = useState(null);
+  const [comment, setComment] = useState("");
+  const [date, setDate] = useState("");
+
+  function addPost() {
+    const newPost = {
+      id: 5,
+      name: "Максим Максим",
+      sport,
+      peopleCount: 1,
+      iConnected: true,
+      allPeopleCount,
+      level,
+      place,
+      date,
+      price,
+      comment,
+    };
+    props.pushPost(newPost);
+  }
+
   return (
     <div className={s.content}>
       <div className={s.navbar}>
         <div className={s.navbarLinks}>
-          <NavLink to={"/profile"} className={s.navbarLinksText} >
+          <NavLink to={"/profile"} className={s.navbarLinksText}>
             Создать заявку
           </NavLink>
         </div>
         <div className={s.navbarLinks}>
-          <NavLink to={"/profile/messages"} className={s.navbarLinksText} >
+          <NavLink to={"/profile/messages"} className={s.navbarLinksText}>
             Сообщения
           </NavLink>
         </div>
         <div className={s.navbarLinks}>
-          <NavLink to={"/"} className={s.navbarLinksText} >
+          <NavLink to={"/"} className={s.navbarLinksText}>
             Выйти
           </NavLink>
         </div>
@@ -28,8 +53,9 @@ const Profile = (props) => {
             <input
               className={s.inputs}
               type="text"
-              placeholder=" Вид спорта"
-              name="name"
+              placeholder="Вид спорта"
+              value={sport}
+              onChange={(event) => setSport(event.target.value)}
             />
           </form>
           <form>
@@ -37,7 +63,7 @@ const Profile = (props) => {
               className={s.inputs}
               type="number"
               placeholder="Кол-во участников"
-              name="name"
+              onChange={(event) => setAllPeopleCount(event.target.value)}
             />
           </form>
           <form>
@@ -45,7 +71,7 @@ const Profile = (props) => {
               className={s.inputs}
               type="number"
               placeholder="Уровень"
-              name="name"
+              onChange={(event) => setLevel(event.target.value)}
             />
           </form>
           <form>
@@ -53,7 +79,14 @@ const Profile = (props) => {
               className={s.inputs}
               type="text"
               placeholder="Место и время"
-              name="name"
+              onChange={(event) => setPlace(event.target.value)}
+            />
+          </form>
+          <form>
+            <input
+              className={s.inputs}
+              type="date"
+              onChange={(event) => setDate(event.target.value)}
             />
           </form>
           <form>
@@ -61,7 +94,7 @@ const Profile = (props) => {
               className={s.inputs}
               type="number"
               placeholder="Стоимость"
-              name="name"
+              onChange={(event) => setPrice(event.target.value)}
             />
           </form>
           <form>
@@ -69,12 +102,12 @@ const Profile = (props) => {
               className={s.inputs}
               type="text"
               placeholder="Комментарии"
-              name="name"
+              onChange={(event) => setComment(event.target.value)}
             />
           </form>
         </div>
         <div className={s.btn}>
-          <button>Разместить заявку</button>
+          <button onClick={addPost}>Разместить заявку</button>
         </div>
       </div>
     </div>

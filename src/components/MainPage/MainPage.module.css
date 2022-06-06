@@ -3,16 +3,25 @@
   background-color: #f5f5f5;
 }
 
+.posts {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 80px;
+  justify-content: center;
+  gap: 100px;
+}
+
 .content {
-  height: 300px;
+  height: 320px;
   width: 600px;
   background-color: #f1ecec;
   border-radius: 6px;
   border: 1px #000 solid;
-  margin-top: 80px;
-  margin-left: 200px;
   padding-left: 70px;
   padding-top: 40px;
+  margin-bottom: 20px;
+  margin-right: 20px;
   font-family: Arial;
   font-weight: 500;
   font-size: 20px;

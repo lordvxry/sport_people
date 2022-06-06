@@ -7,9 +7,160 @@ import "./App.css";
 
 const el = document.getElementById("app");
 
-ReactDOM.render(
-  <HashRouter>
-    <App />
-  </HashRouter>,
-  el
-);
+const postData = {
+  posts: [
+    {
+      id: 1,
+      iConnected: false,
+      name: "Андрей Андреев",
+      sport: "Волейбол",
+      peopleCount: 6,
+      allPeopleCount: 14,
+      level: "",
+      place: "г. Томск, 14:00 - 17:00",
+      date: "",
+      price: 300,
+    },
+    {
+      id: 2,
+      iConnected: false,
+      name: "Андрей Андреев",
+      sport: "Волейбол",
+      peopleCount: 6,
+      allPeopleCount: 14,
+      level: "",
+      place: "г. Томск, 14:00 - 17:00",
+      date: "",
+      price: 500,
+    },
+    {
+      id: 3,
+      iConnected: false,
+      name: "Андрей Андреев",
+      sport: "Волейбол",
+      peopleCount: 3,
+      allPeopleCount: 14,
+      level: "",
+      place: "г. Томск, 14:00 - 17:00",
+      date: "25.06",
+      price: 300,
+    },
+    {
+      id: 4,
+      iConnected: false,
+      name: "Дима Андреев",
+      sport: "Футбол",
+      peopleCount: 0,
+      allPeopleCount: 12,
+      level: "",
+      place: "г. Томск, 14:00 - 17:00",
+      date: "",
+      price: 300,
+    },
+  ],
+
+  messages: [
+    {
+      id: 1,
+      name: "Андрей Андреев",
+      user: "Вы",
+      message1: "Здравствуйте! Можете рассказать подробнее про место встречи",
+      message2: "Здравствуйте! Позже вам отпишусь",
+    },
+    {
+      id: 2,
+      name: "Андрей Андреев",
+      message2: "Часов в 7 будет удобно?",
+    },
+    {
+      id: 3,
+      user: "Вы",
+      name: "Андрей Андреев",
+      message1: "Здравствуйте!",
+      message2: ["Здравствуйте!", "Часов в 7 будет удобно?"],
+    },
+  ],
+
+  sports: [
+    {
+      id: "football",
+      title: "Футбол",
+    },
+
+    {
+      id: "football",
+      title: "Футбол",
+    },
+    {
+      id: "football",
+      title: "Футбол",
+    },
+    {
+      id: "football",
+      title: "Футбол",
+    },
+  ],
+};
+
+const onConnectToPostById = (postId) => {
+  postData.posts.some((post) => {
+    if (post.id === postId) {
+      post.peopleCount++;
+      post.iConnected = true;
+      return true;
+    }
+    return false;
+  });
+  renderDom();
+};
+const onDisconnectToPostById = (postId) => {
+  postData.posts.some((post) => {
+    if (post.id === postId) {
+      post.peopleCount--;
+      post.iConnected = false;
+      return true;
+    }
+    return false;
+  });
+  renderDom();
+};
+
+const pushPost = (newFood) => {
+  console.log("push", postData.posts);
+  postData.posts.some((post) => {
+    for (post.id; post.id === newFood.id; post.id++) {
+      newFood.id++;
+      break;
+    }
+  });
+  console.log("newId", newFood.id);
+  postData.posts.push(newFood);
+};
+
+const pushMessage = (newMessage) => {
+  postData.messages.some((message) => {
+    for (message.id; message.id === newMessage.id; newMessage.user = null) {
+      newMessage.user=null
+      break;
+    }
+  });
+  postData.messages.push(newMessage);
+  renderDom();
+};
+
+const renderDom = () => {
+  ReactDOM.render(
+    <HashRouter>
+      <App
+        postData={postData}
+        onConnectToPostById={onConnectToPostById}
+        onDisconnectToPostById={onDisconnectToPostById}
+        pushPost={pushPost}
+        pushMessage={pushMessage}
+      />
+    </HashRouter>,
+    el
+  );
+};
+
+renderDom();

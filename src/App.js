@@ -15,13 +15,25 @@ const App = (props) => {
       <div className="content">
         <Routes>
           <Route path="/" element={<Auth />} />
-          <Route path="/main" element={<MainPage />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route
+            path="/main"
+            element={
+              <MainPage
+                postData={props.postData}
+                onConnectToPostById={props.onConnectToPostById}
+                onDisconnectToPostById={props.onDisconnectToPostById}
+              />
+            }
+          />
+          <Route
+            path="/profile"
+            element={<Profile pushPost={props.pushPost} />}
+          />
           <Route path="/reg" element={<Registration />} />
-          <Route path="/profile/messages" element={<Messages />} />
+          <Route path="/profile/messages" element={<Messages postData={props.postData} pushMessage={props.pushMessage} />} />
         </Routes>
-      </div>
       <Footer />
+      </div>
     </div>
   );
 };

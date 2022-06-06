@@ -13,7 +13,10 @@ const Registration = () => {
           <input className={s.regInput} placeholder="Введите почту"></input>
         </div>
         <div className={s.regContainer}>
-          <input className={s.regInput} placeholder="Придумайте пароль"></input>
+          <input className={s.regInput} type='password' placeholder="Придумайте пароль"></input>
+        </div>
+        <div className={s.regContainer}>
+          <input className={s.regInput} type='password' placeholder="Повторите пароль"></input>
         </div>
         <div className={s.regBtns}>
           <NavLink to={"/main"}>
