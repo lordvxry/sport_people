@@ -144,7 +144,6 @@ console.log("res", result);
 
 const filter = (sport) => {
   const a = postData.posts.filter((item) => item.sport.includes(sport));
-  for ()
   console.log("aaa", a);
   result.posts.push(a);
 };
