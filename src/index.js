@@ -13,7 +13,7 @@ const postData = {
       id: 1,
       iConnected: false,
       name: "Андрей Андреев",
-      sport: "Волейбол",
+      sport: "Лыжи",
       peopleCount: 6,
       allPeopleCount: 14,
       level: "",
