@@ -83,21 +83,13 @@ const postData = {
 
   sports: [
     {
-      id: "football",
+      id: 1,
       title: "Футбол",
     },
 
     {
-      id: "football",
-      title: "Футбол",
-    },
-    {
-      id: "football",
-      title: "Футбол",
-    },
-    {
-      id: "football",
-      title: "Футбол",
+      id: 2,
+      title: "Волейбол",
     },
   ],
 };
@@ -140,11 +132,21 @@ const pushPost = (newFood) => {
 const pushMessage = (newMessage) => {
   postData.messages.some((message) => {
     for (message.id; message.id === newMessage.id; newMessage.user = null) {
-      newMessage.user=null
+      newMessage.user = null;
       break;
     }
   });
   postData.messages.push(newMessage);
+};
+
+const result = { posts: [] };
+console.log("res", result);
+
+const filter = (sport) => {
+  const a = postData.posts.filter((item) => item.sport.includes(sport));
+  for ()
+  console.log("aaa", a);
+  result.posts.push(a);
 };
 
 const renderDom = () => {
@@ -156,6 +158,7 @@ const renderDom = () => {
         onDisconnectToPostById={onDisconnectToPostById}
         pushPost={pushPost}
         pushMessage={pushMessage}
+        filter={filter}
       />
     </HashRouter>,
     el
