@@ -22,6 +22,7 @@ const App = (props) => {
                 postData={props.postData}
                 onConnectToPostById={props.onConnectToPostById}
                 onDisconnectToPostById={props.onDisconnectToPostById}
+                filter={props.filter}
               />
             }
           />

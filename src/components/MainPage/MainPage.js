@@ -1,50 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import s from "./MainPage.module.css";
 import star from "../../assets/star.svg";
 import search from "../../assets/search.svg";
 import { NavLink } from "react-router-dom";
+import Post from "./Post";
 
 const MainPage = (props) => {
   const { onConnectToPostById, onDisconnectToPostById } = props;
+  const [sport, setSport] = useState("");
+
+  function addFilter() {
+    props.filter(sport)
+    // console.log(sport);
+  }
 
   const postsElement = props.postData.posts.map((post) => {
-    const onPostJoin = () => {
-      console.log("Присоединиться", post.id);
-      if (post.iConnected) {
-        onDisconnectToPostById(post.id);
-      } else {
-        onConnectToPostById(post.id);
-      }
-    };
-
     return (
-      <div key={post.id} className={s.content}>
-        <div>{post.name}</div>
-        <div className={s.contentText}>
-          <div>{post.sport}</div>
-          <div>
-            {post.peopleCount} из {post.allPeopleCount} чел.
-          </div>
-          <div>
-            Уровень: <img src={star} />{" "}
-          </div>
-          <div>{post.place}</div>
-          <div>Дата: {post.date}</div>
-          <div>Стоимость: {post.price} руб.</div>
-        </div>
-        <div className={s.contentBtns}>
-          <button onClick={onPostJoin}>
-            {post.iConnected ? "Отмена" : "Присоединиться"}
-          </button>
-          {post.myPost ? (
-            <></>
-          ) : (
-            <NavLink to={"/profile/messages"}>
-              <button>Написать</button>
-            </NavLink>
-          )}
-        </div>
-      </div>
+      <Post
+        post={post}
+        key={post.id}
+        onConnectToPostById={onConnectToPostById}
+        onDisconnectToPostById={onDisconnectToPostById}
+      />
     );
   });
 
@@ -52,10 +29,17 @@ const MainPage = (props) => {
     <div className={s.main}>
       <div className={s.dropDowns}>
         <div>
-          <select name="category-list" id="category-list">
+          <select value={sport}  onChange={(event) => setSport(event.target.value)}>
             <option value="">Вид спорта</option>
-            <option value="Outdoor">Волейбол</option>
-            <option value="Indoor">Футбол</option>
+            {props.postData.sports.map((sport) => {
+              return (
+                <option
+                  key={sport.id}
+                >
+                  {sport.title}
+                </option>
+              );
+            })}
           </select>
         </div>
         <div>
@@ -81,7 +65,7 @@ const MainPage = (props) => {
           </select>
         </div>
         <div className={s.search}>
-          <button>
+          <button onClick={addFilter}>
             <img src={search} />
           </button>
         </div>
