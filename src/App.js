@@ -7,6 +7,7 @@ import MainPage from "./components/MainPage/MainPage";
 import Messages from "./components/Messages/Messages";
 import Profile from "./components/Profile/Profile";
 import Registration from "./components/Registration/Registration";
+import { useRoutes } from "./components/routes";
 
 const App = (props) => {
   const {
@@ -17,8 +18,10 @@ const App = (props) => {
     onConnectToPostById,
     onDisconnectToPostById,
     filter,
-    levelHandbook
+    levelHandbook,
   } = props;
+
+  const routes = useRoutes(true, props);
 
   return (
     <div className="page">
@@ -30,38 +33,7 @@ const App = (props) => {
           gridTemplateRows: "1fr 50px",
         }}
       >
-        <Routes>
-          <Route path="/" element={<Auth />} />
-          <Route
-            path="/main"
-            element={
-              <MainPage
-                peopleCountHandbook={peopleCountHandbook}
-                priceHandbook={priceHandbook}
-                levelHandbook={levelHandbook}
-                posts={posts}
-                postData={postData}
-                onConnectToPostById={onConnectToPostById}
-                onDisconnectToPostById={onDisconnectToPostById}
-                filter={filter}
-              />
-            }
-          />
-          <Route
-            path="/profile"
-            element={<Profile pushPost={props.pushPost} />}
-          />
-          <Route path="/reg" element={<Registration />} />
-          <Route
-            path="/profile/messages"
-            element={
-              <Messages
-                postData={props.postData}
-                pushMessage={props.pushMessage}
-              />
-            }
-          />
-        </Routes>
+        {routes}
         <Footer />
       </div>
     </div>
