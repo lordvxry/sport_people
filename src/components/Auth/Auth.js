@@ -8,11 +8,20 @@ const Auth = () => {
       <div className={s.auth}>
         <div>
           <div className={s.authText}>Логин:</div>{" "}
-          <input className={s.authInput}></input>
+          <input
+            className={s.authInput}
+            placeholder="Введите email"
+            name="email"
+          ></input>
         </div>
         <div>
           <div className={s.authText}>Пароль:</div>{" "}
-          <input type="password" className={s.authInput}></input>
+          <input
+            name="password"
+            type="password"
+            placeholder="Введите пароль"
+            className={s.authInput}
+          ></input>
         </div>
         <div className={s.authBtns}>
           <NavLink to={"/main"}>
