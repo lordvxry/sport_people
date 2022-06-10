@@ -8,6 +8,7 @@ import Messages from "./components/Messages/Messages";
 import Profile from "./components/Profile/Profile";
 import Registration from "./components/Registration/Registration";
 
+
 const App = (props) => {
   const {
     priceHandbook,
@@ -62,6 +63,7 @@ const App = (props) => {
             }
           />
         </Routes>
+          
         <Footer />
       </div>
     </div>
