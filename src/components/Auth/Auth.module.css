@@ -17,6 +17,12 @@
   align-items: center;
 }
 
+.errorMessage{
+  padding-top: 10px;
+  color: rgb(255, 0, 0);
+  height: 10px;
+}
+
 .authText {
   font-family: Arial;
   font-weight: 500;

@@ -4,6 +4,7 @@ import MainPage from "./MainPage/MainPage";
 import Profile from "./Profile/Profile";
 import Messages from "./Messages/Messages";
 import Auth from "./Auth/Auth";
+import Registration from "./Registration/Registration";
 
 export const useRoutes = (isAuth, props) => {
   const {
@@ -49,6 +50,7 @@ export const useRoutes = (isAuth, props) => {
   return (
     <Routes>
       <Route path="/" element={<Auth />} />
+      <Route path="/reg" element={<Registration />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );

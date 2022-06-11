@@ -1,12 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Auth from "./components/Auth/Auth";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
-import MainPage from "./components/MainPage/MainPage";
-import Messages from "./components/Messages/Messages";
-import Profile from "./components/Profile/Profile";
-import Registration from "./components/Registration/Registration";
 import { useRoutes } from "./components/routes";
 
 const App = (props) => {
@@ -21,7 +16,7 @@ const App = (props) => {
     levelHandbook,
   } = props;
 
-  const routes = useRoutes(true, props);
+  const routes = useRoutes(false, props);
 
   return (
     <div className="page">
