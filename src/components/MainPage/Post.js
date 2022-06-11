@@ -23,7 +23,7 @@ const Post = (props) => {
 
   return (
     <div className={s.content}>
-      <div className={s.header}>{props.post.name}
+      <div className={s.detailBtn}>{props.post.name}
         <button  onClick={() => setModalActive(true)}>подробнее</button>
       </div>
       <div className={s.contentText}>
