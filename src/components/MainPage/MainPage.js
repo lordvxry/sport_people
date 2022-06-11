@@ -22,7 +22,6 @@ const MainPage = (props) => {
     props.filter(sport, count, price, level);
     // console.log(sport);
   }
-  console.log("cccc", sport);
   const postsElement = props.posts.map((post) => {
     return (
       <Post

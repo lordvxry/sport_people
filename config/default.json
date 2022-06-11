@@ -1,0 +1,5 @@
+{
+    "port": 5000,
+    "jwtSecret": "sportPeople",
+    "mongoUri": "mongodb+srv://vladimir:123QWE@cluster0.9zgeo.mongodb.net/app?retryWrites=true&w=majority"
+}
