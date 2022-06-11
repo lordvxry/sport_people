@@ -30,7 +30,7 @@
 /*}*/
 .modal__content {
     border-radius: 12px;
-    background-color: white;
+    /*background-color: white;*/
     transform: scale(0.5);
     height: 320px;
     width: 600px;
@@ -40,6 +40,8 @@
     font-family: Arial;
     font-weight: 500;
     font-size: 20px;
+
+
 }
 .modal__content.active {
     transform: scale(1);
@@ -49,4 +51,11 @@
 .closeBtn {
     right: 10px;
     position: absolute;
+
 }
+
+.comment {
+    word-wrap: break-word;
+}
+
+

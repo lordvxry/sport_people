@@ -72,7 +72,7 @@ const Post = (props) => {
             <div>{props.post.place}</div>
             <div>Дата: {props.post.date}</div>
             <div>Стоимость: {props.post.price} руб.</div>
-            <div>Комментарий: {props.post.comment} </div>
+            <div className='comment'>Комментарий: {props.post.comment} </div>
           </div>
 
 

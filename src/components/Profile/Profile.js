@@ -100,7 +100,7 @@ const Profile = (props) => {
           </form>
           <form>
             <input
-              className={s.inputs}
+              className={s.inputs }
               type="text"
               placeholder="Комментарии"
               onChange={(event) => setComment(event.target.value)}
