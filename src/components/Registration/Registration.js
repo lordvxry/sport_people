@@ -5,7 +5,7 @@ import { useHttp } from "../../hooks/http.hook";
 import { AuthContext } from "../../context/AuthContext";
 
 const Registration = (props) => {
-  const registration = useContext(AuthContext)
+  const registration = useContext(AuthContext);
   const { loading, error, request, clearError } = useHttp();
   const [form, setForm] = useState({
     email: "",
@@ -26,7 +26,7 @@ const Registration = (props) => {
   const registerHandler = async () => {
     try {
       const data = await request("api/auth/register", "POST", { ...form });
-      console.log("Data", data);
+      registration.login(data.token, data.userId);
     } catch (err) {}
   };
 
