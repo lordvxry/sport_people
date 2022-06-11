@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import s from "./Registration.module.css";
 import { NavLink } from "react-router-dom";
 import { useHttp } from "../../hooks/http.hook";
+import { AuthContext } from "../../context/AuthContext";
 
 const Registration = (props) => {
+  const registration = useContext(AuthContext)
   const { loading, error, request, clearError } = useHttp();
   const [form, setForm] = useState({
     email: "",

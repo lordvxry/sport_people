@@ -3,8 +3,12 @@ import { Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import { useRoutes } from "./components/routes";
+import { AuthContext } from "./context/AuthContext";
+import { useAuth } from "./hooks/auth.hook";
 
 const App = (props) => {
+  const { token, login, logout, userId } = useAuth();
+  const isAuth = !!token
   const {
     priceHandbook,
     peopleCountHandbook,
@@ -16,22 +20,27 @@ const App = (props) => {
     levelHandbook,
   } = props;
 
-  const routes = useRoutes(false, props);
+  const routes = useRoutes(isAuth, props);
 
   return (
-    <div className="page">
-      <Header />
-      <div
-        className="content"
-        style={{
-          display: "grid",
-          gridTemplateRows: "1fr 50px",
-        }}
-      >
-        {routes}
-        <Footer />
+    <AuthContext.Provider
+      value={{token, login, logout, userId, isAuth
+      }}
+    >
+      <div className="page">
+        <Header />
+        <div
+          className="content"
+          style={{
+            display: "grid",
+            gridTemplateRows: "1fr 50px",
+          }}
+        >
+          {routes}
+          <Footer />
+        </div>
       </div>
-    </div>
+    </AuthContext.Provider>
   );
 };
 
