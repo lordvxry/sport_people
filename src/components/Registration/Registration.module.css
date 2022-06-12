@@ -8,7 +8,7 @@
 
 .reg {
   width: 550px;
-  height: 470px;
+  height: 510px;
   border: 1px #000 solid;
   border-radius: 8px;
   background-color: #f1ecec;
@@ -16,6 +16,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.errorMessage{
+  color: rgb(255, 0, 0);
+  height: 10px;
 }
 
 .regContainer {

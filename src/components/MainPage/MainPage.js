@@ -5,6 +5,8 @@ import search from "../../assets/search.svg";
 import { NavLink } from "react-router-dom";
 import Post from "./Post";
 
+
+
 const MainPage = (props) => {
   const {
     onConnectToPostById,
@@ -22,7 +24,6 @@ const MainPage = (props) => {
     props.filter(sport, count, price, level);
     // console.log(sport);
   }
-  console.log("cccc", sport);
   const postsElement = props.posts.map((post) => {
     return (
       <Post
@@ -103,6 +104,7 @@ const MainPage = (props) => {
         </div>
       </div>
       <div className={s.posts}>{postsElement}</div>
+
     </div>
   );
 };

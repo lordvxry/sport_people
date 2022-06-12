@@ -1,7 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import s from "./MainPage.module.css";
 import star from "../../assets/star.svg";
 import { NavLink } from "react-router-dom";
+import Modal from "../Modal/Modal";
+
+
+
 
 const Post = (props) => {
   const onPostJoin = () => {
@@ -12,10 +16,16 @@ const Post = (props) => {
       props.onConnectToPostById(props.post.id);
     }
   };
+    const [modalActive, setModalActive] = useState(false)
+    const closeModal = () => {
+      setModalActive(false);
+    }
 
   return (
     <div className={s.content}>
-      <div>{props.post.name}</div>
+      <div className={s.detailBtn}>{props.post.name}
+        <button  onClick={() => setModalActive(true)}>Подробнее</button>
+      </div>
       <div className={s.contentText}>
         <div>{props.post.sport}</div>
         <div>
@@ -39,7 +49,37 @@ const Post = (props) => {
             <button>Написать</button>
           </NavLink>
         )}
+
       </div>
+
+
+
+      <Modal active={modalActive} setActive={setModalActive}
+      >
+
+
+        <div className={s.content}>
+          <div>{props.post.name}
+          <button   className='closeBtn' onClick={closeModal} >X</button></div>
+          <div className={s.contentText}>
+            <div>{props.post.sport}</div>
+            <div>
+              {props.post.peopleCount} из {props.post.allPeopleCount} чел.
+            </div>
+            <div>
+              Уровень: <img src={star} />{" "}
+            </div>
+            <div>{props.post.place}</div>
+            <div>Дата: {props.post.date}</div>
+            <div>Стоимость: {props.post.price} руб.</div>
+            <div>Комментарий:</div>
+            <div className='comment'> {props.post.comment} </div>
+          </div>
+
+
+        </div>
+
+      </Modal>
     </div>
   );
 };
