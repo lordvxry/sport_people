@@ -24,7 +24,7 @@ const Post = (props) => {
   return (
     <div className={s.content}>
       <div className={s.detailBtn}>{props.post.name}
-        <button  onClick={() => setModalActive(true)}>подробнее</button>
+        <button  onClick={() => setModalActive(true)}>Подробнее</button>
       </div>
       <div className={s.contentText}>
         <div>{props.post.sport}</div>
@@ -72,7 +72,8 @@ const Post = (props) => {
             <div>{props.post.place}</div>
             <div>Дата: {props.post.date}</div>
             <div>Стоимость: {props.post.price} руб.</div>
-            <div className='comment'>Комментарий: {props.post.comment} </div>
+            <div>Комментарий:</div>
+            <div className='comment'> {props.post.comment} </div>
           </div>
 
 
