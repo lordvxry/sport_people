@@ -5,7 +5,7 @@ import { useHttp } from "../../hooks/http.hook";
 import { AuthContext } from "../../context/AuthContext";
 
 const Auth = () => {
-  const auth = useContext(AuthContext)
+  const auth = useContext(AuthContext);
   const { loading, error, request, clearError } = useHttp();
   const [form, setForm] = useState({
     email: "",
@@ -28,7 +28,7 @@ const Auth = () => {
   const loginHandler = async () => {
     try {
       const data = await request("api/auth/login", "POST", { ...form });
-      auth.login(data.token, data.userId)
+      auth.login(data.token, data.userId);
     } catch (err) {}
   };
 
@@ -44,6 +44,7 @@ const Auth = () => {
             name="email"
             className={s.authInput}
             placeholder="Введите email"
+            value={form.email}
             onChange={changeHandler}
           ></input>
         </div>
@@ -54,6 +55,7 @@ const Auth = () => {
             type="password"
             placeholder="Введите пароль"
             className={s.authInput}
+            value={form.password}
             onChange={changeHandler}
           ></input>
         </div>

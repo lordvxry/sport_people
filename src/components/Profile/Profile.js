@@ -1,8 +1,12 @@
-import React, { useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 import s from "./Profile.module.css";
 
 const Profile = (props) => {
+  const auth = useContext(AuthContext);
+  const history = useNavigate();
+  
   const [sport, setSport] = useState("");
   const [allPeopleCount, setAllPeopleCount] = useState("");
   const [level, setLevel] = useState("");
@@ -29,24 +33,30 @@ const Profile = (props) => {
     props.pushPost(newPost);
   }
 
+  const logoutHandler = (event) => {
+    event.preventDefault();
+    auth.logout();
+    history("/");
+  };
+
   return (
     <div className={s.content}>
       <div className={s.navbar}>
-        <div className={s.navbarLinks}>
+        <li className={s.navbarLinks}>
           <NavLink to={"/profile"} className={s.navbarLinksText}>
             Создать заявку
           </NavLink>
-        </div>
-        <div className={s.navbarLinks}>
+        </li>
+        <li className={s.navbarLinks}>
           <NavLink to={"/profile/messages"} className={s.navbarLinksText}>
             Сообщения
           </NavLink>
-        </div>
-        <div className={s.navbarLinks}>
-          <NavLink to={"/"} className={s.navbarLinksText}>
+        </li>
+        <li className={s.navbarLinks}>
+          <a href="/" onClick={logoutHandler} className={s.navbarLinksText}>
             Выйти
-          </NavLink>
-        </div>
+          </a>
+        </li>
       </div>
       <div className={s.form}>
         <div className={s.formInputs}>

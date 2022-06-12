@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useContext } from "react";
 import s from "./Registration.module.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useHttp } from "../../hooks/http.hook";
 import { AuthContext } from "../../context/AuthContext";
 
 const Registration = (props) => {
   const registration = useContext(AuthContext);
+  const navigate = useNavigate()
   const { loading, error, request, clearError } = useHttp();
   const [form, setForm] = useState({
     email: "",
@@ -26,7 +27,8 @@ const Registration = (props) => {
   const registerHandler = async () => {
     try {
       const data = await request("api/auth/register", "POST", { ...form });
-      registration.login(data.token, data.userId);
+      alert(`${data.message}! Теперь вы можете авторизироваться!`)
+      navigate("/")
     } catch (err) {}
   };
 
@@ -44,6 +46,7 @@ const Registration = (props) => {
             name="email"
             className={s.regInput}
             placeholder="Введите почту"
+            value={form.email}
             onChange={changeHandler}
           ></input>
         </div>
@@ -53,6 +56,7 @@ const Registration = (props) => {
             className={s.regInput}
             type="password"
             placeholder="Придумайте пароль"
+            value={form.password}
             onChange={changeHandler}
           ></input>
         </div>
