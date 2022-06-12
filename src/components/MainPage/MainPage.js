@@ -5,6 +5,8 @@ import search from "../../assets/search.svg";
 import { NavLink } from "react-router-dom";
 import Post from "./Post";
 
+
+
 const MainPage = (props) => {
   const {
     onConnectToPostById,
@@ -102,6 +104,7 @@ const MainPage = (props) => {
         </div>
       </div>
       <div className={s.posts}>{postsElement}</div>
+
     </div>
   );
 };

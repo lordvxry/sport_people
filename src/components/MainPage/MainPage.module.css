@@ -57,6 +57,15 @@
   box-shadow: 1px 2px #666;
   transform: translateY(1px);
 }
+.detailBtn{
+  display: flex;
+  justify-content: space-between;
+  padding-right: 70px;
+
+
+
+}
+
 
 .dropDowns {
   display: flex;
